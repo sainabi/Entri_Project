@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <style>
+        
+form {
+    margin-top: 20px;
+    text-align:center;
+}
+
+input[type="submit"] {
+    padding: 10px 20px; 
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+p{
+    font-size:10px;
+    color:red;
+    
+}
+</style>
+</head>
+<body>
+    <p>Welcome {{request.user.username}} Thank you for login.</p>
+    <div class="container">
+        
+        
+        <form  action="add" method="POST" >
+        {%csrf_token%}
+        <h1>ADDING PRODUCTS:</h1>
+        <label for name>Name:</label><br>
+        <input type="text" name="name"  ><br><br>
+        <label for des>Description:</label><br>
+        <textarea  name="description" id="description" rows="5" col="5">
+        </textarea><br>
+        <label for price>Price:</label><br>
+        <input type="text" name="price"><br><br>
+        <label for qty>Quantity:</label><br>
+        <input type="text" name="quantity"><br><br>
+
+        <input type="submit" value="Add Product">
+
+   <p> {{msg}}</p>
+    </form>
+
+
+</div>
+
+
+
+   <div class="container" >
+    
+    <form action="display">
+        <h1>DISPLAYING PRODUCTS:</h1>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            {%for i in lists%}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.description}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.quantity}}</td>
+
+        
+            </tr>
+            {%endfor%}
+
+    
+        </table><br>
+        <input type="submit" value="Display Products"><br><br>
+        
+
+ </form>
+</div>
+
+   
+<div class="container" >
+        
+    <form action="delt" method="POST"><br><br>
+    {%csrf_token%}
+    <h1>DELETION OF PRODUCTS:</h1>
+    <label for delt>Enter the Product to be deleted:</label><br><br>
+    <input type="text" name="name"><br><br>
+    <input type="submit" value="Delete" >
+
+    <p>{{msg1}}</p>
+
+ </form>
+
+</div>
+
+
+
+
+    
+
+<div class="container" >
+
+    <form action="update" method="POST" >
+    {%csrf_token%}
+    <h1>UPDATION OF PRODUCT:<h1>
+ <label for new>New Product:</label><br>
+ <input type="text" name="newproduct"><br><br>
+ <label for old>Old Product:</label><br>
+ <input type="text" name="oldproduct"><br><br>
+ <input type="submit" value="Update"><br>
+ <p>{{msg2}}</p>
+ </form>
+</div>
+
+
+<form action='logout'> 
+    <input type="submit" value="Logout">
+</form>
+
+</body>
+</html>

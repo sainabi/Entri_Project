@@ -1,0 +1,46 @@
+input{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+}
+label{
+    font-size: 20px;
+    font-weight: bold;
+    
+
+}
+textarea{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    color: black;
+    font-size: 20px;
+    table-layout: fixed;
+    border: 1px solid #ccc;
+    
+
+}
+h1{
+    font-weight: bold;
+    font-size: 25px;
+}
+.container{
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto;
+    
+    width: 50%;
+    
+    
+}
+input[type="submit"]{
+    background-color: gray;
+    
+}
